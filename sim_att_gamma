@@ -1,0 +1,152 @@
+# Gamma-distributed Threshold Burst Model (attenuated)
+
+#graphics opengl
+#graphic_iter 5
+
+dim 3
+species S U M1 M2 M3 M4 M5 M6 M7 M8 M9 M10 M11 M12 M13 M14 M15 M16 M17 M18 M19 M20 M21 M22 M23 M24 M25 M26 M27 M28 M29 M30
+
+boundaries 0 -500 500 p
+boundaries 1 -500 500 p
+boundaries 2 -500 500 p
+
+time_start 0
+time_stop 1000
+time_step 0.01
+
+color S blue
+color U darkorange
+
+color M1 0.9 1 0.9
+color M2 0.8 1 0.8
+color M3 0.7 1 0.7
+color M4 0.6 1 0.6
+color M5 0.5 1 0.5
+color M6 0.4 1 0.4
+color M7 0.3 1 0.3
+color M8 0.2 1 0.2
+color M9 0.1 1 0.1
+color M10 0 1 0
+color M11 0 0.9 0
+color M12 0 0.8 0
+color M13 0 0.7 0
+color M14 0 0.6 0
+color M15 0 0.5 0
+color M16 0 0.4 0
+color M17 0 0.3 0
+color M18 0 0.2 0
+color M19 0 0.1 0
+color M20 0 0 0
+
+display_size S 3
+display_size U 5
+display_size M* 5
+
+molecule_lists slist ulist m1list m2list m3list m4list m5list m6list m7list m8list m9list m10list m11list m12list m13list m14list m15list m16list m17list m18list m19list m20list
+mol_list S slist
+mol_list U ulist
+mol_list M1 m1list
+mol_list M2 m2list
+mol_list M3 m3list
+mol_list M4 m4list
+mol_list M5 m5list
+mol_list M6 m6list
+mol_list M7 m7list
+mol_list M8 m8list
+mol_list M9 m9list
+mol_list M10 m10list
+mol_list M11 m11list
+mol_list M12 m12list
+mol_list M13 m13list
+mol_list M14 m14list
+mol_list M15 m15list
+mol_list M16 m16list
+mol_list M17 m17list
+mol_list M18 m18list
+mol_list M19 m19list
+mol_list M20 m20list
+molperbox 1
+
+difc S 100
+difc U 1
+difc M* 1
+
+reaction infection S + U -> M1
+binding_radius infection 12
+
+variable alpha = 0.1
+
+variable a = 0.463
+variable b = 0.098
+variable norm = 1.1025
+
+reaction alpha1 M1 -> M2 alpha
+reaction alpha2 M2 -> M3 alpha
+reaction alpha3 M3 -> M4 alpha
+reaction alpha4 M4 -> M5 alpha
+reaction alpha5 M5 -> M6 alpha
+reaction alpha6 M6 -> M7 alpha
+reaction alpha7 M7 -> M8 alpha
+reaction alpha8 M8 -> M9 alpha
+reaction alpha9 M9 -> M10 alpha
+reaction alpha10 M10 -> M11 alpha
+reaction alpha11 M11 -> M12 alpha
+reaction alpha12 M12 -> M13 alpha
+reaction alpha13 M13 -> M14 alpha
+reaction alpha14 M14 -> M15 alpha
+reaction alpha15 M15 -> M16 alpha
+reaction alpha16 M16 -> M17 alpha
+reaction alpha17 M17 -> M18 alpha
+reaction alpha18 M18 -> M19 alpha
+reaction alpha19 M19 -> M20 alpha
+reaction alpha20 M20 -> M21 alpha
+reaction alpha21 M21 -> M22 alpha
+reaction alpha22 M22 -> M23 alpha
+reaction alpha23 M23 -> M24 alpha
+reaction alpha24 M24 -> M25 alpha
+reaction alpha25 M25 -> M26 alpha
+reaction alpha26 M26 -> M27 alpha
+reaction alpha27 M27 -> M28 alpha
+reaction alpha28 M28 -> M29 alpha
+reaction alpha29 M29 -> M30 alpha
+
+reaction mu1 M1 -> S + U norm*(1^(a-1))*(exp(-1*b))
+reaction mu2 M2 -> S + S + U norm*(2^(a-1))*(exp(-2*b))
+reaction mu3 M3 -> S + S + S + U norm*(3^(a-1))*(exp(-3*b))
+reaction mu4 M4 -> S + S + S + S + U norm*(4^(a-1))*(exp(-4*b))
+reaction mu5 M5 -> S + S + S + S + S + U norm*(5^(a-1))*(exp(-5*b))
+reaction mu6 M6 -> S + S + S + S + S + S + U norm*(6^(a-1))*(exp(-6*b))
+reaction mu7 M7 -> S + S + S + S + S + S + S + U norm*(7^(a-1))*(exp(-7*b))
+reaction mu8 M8 -> S + S + S + S + S + S + S + S + U norm*(8^(a-1))*(exp(-8*b))
+reaction mu9 M9 -> S + S + S + S + S + S + S + S + S + U norm*(9^(a-1))*(exp(-9*b))
+reaction mu10 M10 -> S + S + S + S + S + S + S + S + S + S + U norm*(10^(a-1))*(exp(-10*b))
+reaction mu11 M11 -> S + S + S + S + S + S + S + S + S + S + S + U norm*(11^(a-1))*(exp(-11*b))
+reaction mu12 M12 -> S + S + S + S + S + S + S + S + S + S + S + S + U norm*(12^(a-1))*(exp(-12*b))
+reaction mu13 M13 -> S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(13^(a-1))*(exp(-13*b))
+reaction mu14 M14 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(14^(a-1))*(exp(-14*b))
+reaction mu15 M15 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(15^(a-1))*(exp(-15*b))
+reaction mu16 M16 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(16^(a-1))*(exp(-16*b))
+reaction mu17 M17 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(17^(a-1))*(exp(-17*b))
+reaction mu18 M18 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(18^(a-1))*(exp(-18*b))
+reaction mu19 M19 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(19^(a-1))*(exp(-19*b))
+reaction mu20 M20 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(20^(a-1))*(exp(-20*b))
+reaction mu21 M21 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(21^(a-1))*(exp(-21*b))
+reaction mu22 M22 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(22^(a-1))*(exp(-22*b))
+reaction mu23 M23 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(23^(a-1))*(exp(-23*b))
+reaction mu24 M24 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(24^(a-1))*(exp(-24*b))
+reaction mu25 M25 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(25^(a-1))*(exp(-25*b))
+reaction mu26 M26 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(26^(a-1))*(exp(-26*b))
+reaction mu27 M27 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(27^(a-1))*(exp(-27*b))
+reaction mu28 M28 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(28^(a-1))*(exp(-28*b))
+reaction mu29 M29 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(29^(a-1))*(exp(-29*b))
+reaction mu30 M30 -> S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + S + U norm*(30^(a-1))*(exp(-30*b))
+
+mol 10 S 0 0 0
+mol 10000 U u u u
+
+#cmd b pause
+
+output_files output_att_gamma.txt
+cmd i 0 1000 0.01 molcount output_att_gamma.txt
+
+end_file
